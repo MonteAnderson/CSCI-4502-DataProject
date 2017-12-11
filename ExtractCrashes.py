@@ -11,37 +11,71 @@ import collections
 from collections import Counter
 
 if __name__ == "__main__":
-    print("TestNorm")
+    print("Completed Creating Database. Filename: (YEAR)-information.csv")
+    countedList = []
     newListDate = []
     newListTemp = []
-    countedList = []
-    count = 1
+    newListPrecip = []
+    newListSnowFall = []
+    newListAvgWindSpeed = []
+    newListFog = []
+    newListIce = []
+    newListCrashes = []
+    newListCrashesSliced = []
+    countedCrashes = []
+    index = 0
+
     with open('ToC-NC-crashes.csv', 'rU') as fin:
-        #headerLine = next(fin)
+        headerLine = next(fin)
+        for row in csv.reader(fin):
+            if ('2016' in row[0]):
+                item= str(row[0])
+                newListCrashes.append(str(item[:10]))      
+        newListCrashes.sort()
+        #print(newListCrashes)
+        
+    with open('ToC-NC-weather.csv', 'rU') as fin:
+        headerLine = next(fin)
         for row in csv.reader(fin):
             if ('2016' in row[0]):
                 newListDate.append(str(row[0]))
+	        newListTemp.append(row[1])
+                newListPrecip.append(row[3])
+                newListSnowFall.append(row[4])
+                newListFog.append(row[11])
+                newListIce.append(row[16])
+
+
+        with open('2016-information.csv', 'wb') as fileOut:
+            countedList = Counter(newListCrashes)
+            od = collections.OrderedDict(sorted(countedList.items()))
             
-        newListDate.sort()
+            for key, value in od.items():
+                myDict = (key, value)
+                countedCrashes.append(str(value))
 
-        for item in newListDate:
-            item = item[:10]
-            #print(item)
-            newListTemp.append(item[:10])
+            fileOut.write("Date,Temp,Precipitation,Snowfall,Fog,Ice,Crashes\n")
+            testZip = zip(newListDate, newListTemp, newListPrecip, newListSnowFall, newListFog, newListIce)
 
-        newListTemp.sort()
-        print(Counter(newListTemp))
-        #print(newListTemp)
-        #for item in newListDate:
+            testZip.sort(key = lambda t: t[0])
 
-        with open('test-c.csv', 'wb') as fileOut:
-            fileOut.write("Date,#ofAccidents\n")
-
-            for item in newListTemp:
-                fileOut.write(item)
-                #fileOut.write(countedList)
+            for a,b,c,d,e,f in testZip:
+                #print(a,b,c)
+                fileOut.write(a)
                 fileOut.write(",")
+                fileOut.write(b)
+                fileOut.write(",")
+                fileOut.write(c)
+                fileOut.write(",")
+                fileOut.write(d)
+                fileOut.write(",")
+                fileOut.write(e)
+                fileOut.write(",")
+                fileOut.write(f)
+                fileOut.write(",")
+                fileOut.write(countedCrashes[index])
                 fileOut.write("\n")
+                index+=1
                 
         newListDate.sort()
         #print(Counter(newListDate))
