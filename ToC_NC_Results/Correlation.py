@@ -11,51 +11,49 @@ import collections
 from collections import Counter
 
 if __name__ == "__main__":
-    print("Completed Creating Database. Filename: (YEAR)-information.csv")
-    countedList = []
-    newListDate = []
-    newListTemp = []
-    newListPrecip = []
-    newListSnowFall = []
-    newListAvgWindSpeed = []
-    newListFog = []
-    newListIce = []
-    newListCrashes = []
-    newListCrashesSliced = []
-    countedCrashes = []
-    index = 0
+    print("Completed Calculating Correlation. Filename: (YEAR)-correlation.csv")
+    dateColumn = []
+    temperatureSet = []
+    crashSet = []
+    newTemperatureSet = []
+    newCrashSet = []
 
-    with open('accidents_uk.csv', 'rU') as fin:
+    with open('2017-information-ToC-NC.csv', 'rU') as fin:
         headerLine = next(fin)
         for row in csv.reader(fin):
-            if ('2015' in row[0]):
-                item= str(row[0])
-                print(item)
-                newListCrashes.append(str(item[:10]))      
-        newListCrashes.sort()
-        #print(newListCrashes)
-        
-    with open('Denver-weather.csv', 'rU') as fin:
-        headerLine = next(fin)
-        for row in csv.reader(fin):
-            if ('2017' in row[2]):
-                newListDate.append(str(row[2]))
-	        newListTemp.append(row[6])
-                newListPrecip.append(row[4])
-                newListSnowFall.append(row[5])
-                newListFog.append(row[6])
-                newListIce.append(row[6])
+            dateColumn.append(row[0])  
+            temperatureSet.append(row[3])
+            crashSet.append(row[6])
+ 
 
+        for item in temperatureSet:
+            newTemperatureSet.append(float(item))
+            #if (item == 'Yes'):
+                #newTemperatureSet.append(1)
+            #else:
+                #newTemperatureSet.append(0)
 
-        with open('2017-information-UK.csv', 'wb') as fileOut:
+        for item in crashSet:
+            newCrashSet.append(float(item))
+
+        #medianListTemp = sorted(newTemperatureSet)
+        #avgListCrash = np.mean(newCrashSet)
+
+        #stdevTemp = np.std(medianListTemp)
+
+        #print(stdevTemp)
+        #print(avgListCrash)
+        print(np.corrcoef(newTemperatureSet, newCrashSet)[0,1])
+
+        """with open('2017-information-Denver.csv', 'wb') as fileOut:
             countedList = Counter(newListCrashes)
             od = collections.OrderedDict(sorted(countedList.items()))
-            #print(countedList)
+            
             for key, value in od.items():
                 myDict = (key, value)
                 countedCrashes.append(str(value))
 
-            while (len(countedCrashes) <= 365):
+            while (len(countedCrashes) < 365):
                 countedCrashes.append("NaN")
                 #print(len(countedCrashes))
 
@@ -63,7 +61,7 @@ if __name__ == "__main__":
             testZip = zip(newListDate, newListTemp, newListPrecip, newListSnowFall, newListFog, newListIce)
 
             testZip.sort(key = lambda t: t[0])
-            print(len(countedCrashes))
+
             for a,b,c,d,e,f in testZip:
                 #print(a,b,c)
                 fileOut.write(a)
@@ -78,13 +76,12 @@ if __name__ == "__main__":
                 fileOut.write(",")
                 fileOut.write(f)
                 fileOut.write(",")
+
                 fileOut.write(countedCrashes[index])
-                print(countedCrashes[index])
                 fileOut.write("\n")
-                if index < 365:
-                    index+=1
-                #print(index)     
-        newListDate.sort()
+                index+=1
+                        """
+        #newListDate.sort()
         #print(Counter(newListDate))
         #plt.plot(newListDate,newListPrecip)
         #plt.show()

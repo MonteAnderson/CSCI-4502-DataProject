@@ -1,0 +1,43 @@
+Correlations:
+
+- 2012 -
+Correlation between Temp and #Crashes: -0.0526444486605
+Correlation between Precipitation and #Crashes: -0.0288815011673
+Correlation between Snowfall and #Crashes: -0.021118044694
+Correlation between Fog and #Crashes: 0.00893468486424
+
+- 2013 -
+Correlation between Temp and #Crashes: 0.0150929477397
+Correlation between Precipitation and #Crashes: 0.138410982275
+Correlation between Snowfall and #Crashes: 0.0395244099521
+Correlation between Fog and #Crashes: -0.0106749916698
+Correlation between Ice and #Crashes: 0.0888181150364
+
+- 2014 -
+Correlation between Temp and #Crashes: 0.0560376554114
+Correlation between Precipitation and #Crashes: 0.100357898335
+Correlation between Snowfall and #Crashes: 0.140242870188
+Correlation between Fog and #Crashes: 0.122650879373
+Correlation between Ice and #Crashes: 0.0178661358698
+
+- 2015 -
+Correlation between Temp and #Crashes: -0.0280859651032
+Correlation between Precipitation and #Crashes: 0.109564231857
+Correlation between Snowfall and #Crashes: 0.0710933166149
+Correlation between Fog and #Crashes: 0.069968660976
+Correlation between Ice and #Crashes: -0.0240135243157
+
+- 2016 -
+Correlation between Temp and #Crashes: 0.0197864946379
+Correlation between Precipitation and #Crashes: -0.08894498073
+Correlation between Snowfall and #Crashes: -0.0486979630787
+Correlation between Fog and #Crashes: 0.00311084895958
+Correlation between Ice and #Crashes: -0.0419073814944
+
+- 2017 -
+Correlation between Temp and #Crashes: -0.0255185158741
+Correlation between Precipitation and #Crashes: 0.0510329456083
+Correlation between Snowfall and #Crashes: -0.125885600934
+Correlation between Fog and #Crashes: 0.0293577616002
+Correlation between Ice and #Crashes: -0.070699793889
+
