@@ -1,0 +1,5 @@
+- 2017 -
+Correlation between Temp and #Crashes: 0.0390545233121
+Correlation between Precipitation and #Crashes: -0.0378290892218
+
+
