@@ -5,7 +5,7 @@ import argparse
 import csv
 import math
 import numpy as np
-#import scipy as stats
+from scipy import stats
 import matplotlib.pyplot as plt
 import collections
 from collections import Counter
@@ -43,7 +43,9 @@ if __name__ == "__main__":
 
         #print(stdevTemp)
         #print(avgListCrash)
-        print(np.corrcoef(newTemperatureSet, newCrashSet)[0,1])
+        
+        print("Correlation: " + str(np.corrcoef(newTemperatureSet, newCrashSet)[0,1]))
+        print("Regression: " + str(stats.linregress(newTemperatureSet, newCrashSet)))
 
         """with open('2017-information-Denver.csv', 'wb') as fileOut:
             countedList = Counter(newListCrashes)
